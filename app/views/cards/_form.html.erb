@@ -1,0 +1,53 @@
+<%= form_with(model: card) do |form| %>
+  <% if card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+        <% card.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bank_name %>
+    <%= form.text_field :bank_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :card_number %>
+    <%= form.number_field :card_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cvc %>
+    <%= form.number_field :cvc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_select :end_date %>
+  </div>
+    
+   <div class="field">
+   
+    <%= form.select(:card_type, ['debit', 'credit'])%>
+    
+  </div> 
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

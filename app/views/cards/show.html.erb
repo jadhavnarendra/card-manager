@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @card.name %>
+</p>
+<p>
+  <strong>Bank Name:</strong>
+  <%= @card.bank_name %>
+</p>
+
+<p>
+  <strong>Card number:</strong>
+ <%= @card.card_number.to_s.gsub(/\d(?=[0-9]{4})/, '*') %>
+</p>
+
+<p>
+  <strong>Cvc:</strong>
+  <%= @card.cvc.to_s.gsub(/\d(?=[0-9]{0})/, '*') %>
+</p>
+
+<p>
+  <strong>Card Type:</strong>
+  <%= @card.card_type %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @card.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @card.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_card_path(@card) %> |
+<%= link_to 'Back', cards_path %> |
+
+<%= link_to 'Billing', card_billings_path(@card) %>
+
+
+
+

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  card_number: 1
+  cvc: 1
+  postal_code: 1
+  valid_thru: 2022-05-24
+  total_amount: 1
+  amount_paid: 1
+  due_amount: 1
+  product: MyString
+
+two:
+  name: MyString
+  card_number: 1
+  cvc: 1
+  postal_code: 1
+  valid_thru: 2022-05-24
+  total_amount: 1
+  amount_paid: 1
+  due_amount: 1
+  product: MyString

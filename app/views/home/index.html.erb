@@ -1,0 +1,24 @@
+<h1>Card Manager</h1>
+
+
+
+ <%= link_to "Debit Card", cards_path(card_type: 'debit'), class: "btn btn-primary btn-lg" %>
+<br><br><br><br><br>
+
+ <%= link_to "Credit Card", cards_path(card_type: 'credit'), class: "btn btn-secondary btn-lg" %>  
+
+
+
+
+<h4>Debit  => <%= Card.where(:card_type => 'debit').count %></h4>
+<br><br>
+<h4>Credit  => <%= Card.where(:card_type => 'credit').count %></h4>
+
+
+
+
+
+
+
+
+

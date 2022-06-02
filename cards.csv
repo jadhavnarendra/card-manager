@@ -1,0 +1,3 @@
+id, name, card_number, cvc, card_type, bank_name
+20, aman, 123456789, 123, debit, union
+

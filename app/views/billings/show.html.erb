@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @billing.name %>
+</p>
+
+<p>
+  <strong>Card number:</strong>
+  <%= @billing.card_number %>
+</p>
+
+<p>
+  <strong>Cvc:</strong>
+  <%= @billing.cvc %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @billing.postal_code %>
+</p>
+
+<p>
+  <strong>Valid thru:</strong>
+  <%= @billing.valid_thru %>
+</p>
+
+<p>
+  <strong>Total amount:</strong>
+  <%= @billing.total_amount %>
+</p>
+
+<p>
+  <strong>Amount paid:</strong>
+  <%= @billing.amount_paid %>
+</p>
+
+<p>
+  <strong>Due amount:</strong>
+  <%= @billing.due_amount %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @billing.product %>
+</p>
+
+
+<%= link_to 'Back', card_billings_path %> |
+<%= link_to "Destroy", [@billing.card, @billing], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %>
+ 

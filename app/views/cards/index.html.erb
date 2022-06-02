@@ -1,0 +1,74 @@
+
+<p id="notice"><%= notice %></p>
+
+
+  <p>
+    <%= link_to "Export Debit", cards_path(format: "csv", card_type: "debit"), class: "btn btn-success btn-md sssssss" %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to "Export Credit", cards_path(format: "csv", card_type: "credit"), class: "btn btn-primary btn-md" %>
+  </p> 
+
+
+<table id="cards-datatable" data-source="<%= cards_path(format: :json) %>">
+
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Bank Name</th>
+      <th>Card Type</th>
+      <th>Card number</th>
+      <th>Cvc</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th colspan="3"></th> 
+    </tr>
+  </thead>
+
+  <tbody>
+  </tbody>
+</table>
+
+<h2>Import Cards</h2>
+<%= form_tag import_cards_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+  <% end %>
+
+<br>
+
+<%= link_to 'New Card', new_card_path %> |
+<%= link_to 'Back', root_path %>
+
+
+<script>
+  // $("#cards-datatable").click(function(){alert("hi")})
+  
+  
+  jQuery(document).ready(function() {
+    $('#cards-datatable').dataTable({
+      "processing": true,
+      "serverSide": true,
+      "ajax": {
+        "url": $('#cards-datatable').data('source')
+      },
+      "columns": [
+        // {"data": "id"},
+        {"data": "name"},
+        {"data": "card_number"},
+        {"data": "cvc"},
+        {"data": "start_date"},
+        {"data": "end_date"},
+        {"data": "card_type"},
+        {"data": "bank_name"},
+      ]
+      // pagingType is optional, if you want full pagination controls.
+      // Check dataTables documentation to learn more about
+      // available options.
+    });
+  });
+</script>
+
+
+
+ 
+    

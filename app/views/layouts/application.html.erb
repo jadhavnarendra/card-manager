@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CardManager</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+     <!-- Bootstrap CSS -->
+    
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src = "js/jquery.dataTables.min.js" defer ></script>
+  
+    <title>Card Manager App</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+     
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
+
+  </head>
+
+  <body>
+   <%= render 'home/header' %>
+    <div class="container">
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+     <%= yield %>
+    </div>
+  </body>
+</html>
