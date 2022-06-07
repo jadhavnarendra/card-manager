@@ -1,16 +1,17 @@
 class CardsController < ApplicationController
   respond_to :html, :json
-  before_action :set_card, only: %i[create new show edit update destroy ]
+  before_action :set_card, only: %i[ show edit update destroy ]
 
   # GET /cards or /cards.json
   def index
     @cards = Card.all
     @cards = Card.where(card_type: params[:card_type])
+    # @cards = Card.group(card_type: params[:card_type]).count
    
     respond_to do |format|
       format.html
       format.csv { send_data @cards.to_csv, filename: "cards-#{Date.today}.csv" }
-      format.json { render json: CardDatatable.new(params) }
+      format.json { render json: CardDatatable.new(params, view_context: view_context) }
     end
     # render json: CardDatatable.new(params)
       #format.xls # { send_data @cards.to_csv(col_sep: "/t") }
@@ -85,6 +86,7 @@ class CardsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_card
+      
       @card = Card.find(params[:id])
     end
 

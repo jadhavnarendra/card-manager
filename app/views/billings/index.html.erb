@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Billings</h1>
-<%= link_to 'New', new_card_billing_path(@card) %> |
-<%= link_to 'Back', cards_path %>
+
 <table>
   <thead>
     <tr>
@@ -12,8 +11,8 @@
       <th>Postal code</th>
       <th>Valid thru</th>
       <th>Total amount</th>
-      <th>Amount paid</th>
-      <th>Due amount</th>
+      <th>Amound paid</th>
+      <th>Due amound</th>
       <th>Product</th>
       <th colspan="3"></th>
     </tr>
@@ -31,23 +30,14 @@
         <td><%= billing.amount_paid %></td>
         <td><%= billing.due_amount %></td>
         <td><%= billing.product %></td>
-        <td><%= link_to 'Show', card_billing_path(@card, billing) %></td>
-        <%
-=begin%>
- <td><%= link_to 'Edit', edit_card_billing_path(@card, billing) %></td> 
-<%
-=end%>
-        <%
-=begin%>
- <td><%= link_to 'Destroy', billing, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
-<%
-=end%>
-
+        <td><%= link_to 'Show', card_billing_path(@card, billing)%></td>
+        <td><%= link_to 'Edit', edit_card_billing_path(@card, billing) %></td>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+
 
 

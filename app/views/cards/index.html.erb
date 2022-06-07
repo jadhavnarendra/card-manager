@@ -1,25 +1,25 @@
 
 <p id="notice"><%= notice %></p>
 
-
   <p>
     <%= link_to "Export Debit", cards_path(format: "csv", card_type: "debit"), class: "btn btn-success btn-md sssssss" %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= link_to "Export Credit", cards_path(format: "csv", card_type: "credit"), class: "btn btn-primary btn-md" %>
   </p> 
-
+<br><br>
+  <%= column_chart Card.group(:card_type).count, width: "250px", height: "250px" %>
+<br><br>
 
 <table id="cards-datatable" data-source="<%= cards_path(format: :json) %>">
-
 
   <thead>
     <tr>
       <th>Name</th>
-      <th>Bank Name</th>
-      <th>Card Type</th>
-      <th>Card number</th>
+      <th>Card&nbsp;number</th>
       <th>Cvc</th>
-      <th>Start date</th>
-      <th>End date</th>
+      <th>Start&nbsp;date</th>
+      <th>End&nbsp;date</th>
+      <th>Card&nbsp;Type</th>
+      <th>Bank&nbsp;Name</th>
       <th colspan="3"></th> 
     </tr>
   </thead>
@@ -29,7 +29,7 @@
 </table>
 
 <h2>Import Cards</h2>
-<%= form_tag import_cards_path, multipart: true do %>
+  <%= form_tag import_cards_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Import" %>
   <% end %>
@@ -42,8 +42,6 @@
 
 <script>
   // $("#cards-datatable").click(function(){alert("hi")})
-  
-  
   jQuery(document).ready(function() {
     $('#cards-datatable').dataTable({
       "processing": true,
@@ -68,7 +66,3 @@
   });
 </script>
 
-
-
- 
-    

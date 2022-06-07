@@ -1,6 +1,6 @@
 class BillingsController < ApplicationController
   before_action :set_billing, only: %i[ show edit update destroy ]
-  before_action :card_billing, only: %i[ create new show edit update destroy ]
+  before_action :card_billing, only: %i[ show edit update destroy ]
 
   # GET /billings or /billings.json
     def index

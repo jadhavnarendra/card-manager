@@ -66,4 +66,7 @@ gem 'jquery-datatables-rails'
 
 gem 'ajax-datatables-rails'
 gem 'jquery-rails'
+gem "chartkick"
+
+
 

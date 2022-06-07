@@ -7,21 +7,13 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-
+require("chartkick")
+require("chart.js")
+//= require chartkick
+//= require Chart.bundle
 
 import $ from 'jquery';
 global.$ = jQuery;
 require('datatables.net-bs4')
 require ('dataTables/jquery.dataTables')
-
-require('imports-loader?define=>false!datatables.net')(window, $)
-require('imports-loader?define=>false!datatables.net-select')(window, $)
-
-
-document.addEventListener("turbolinks:load", function () {
-  debugger
-  $('#cards-datatable').click(function(){
-    alert("hi")
-  })
-});
-
+import "chartkick/chart.js"

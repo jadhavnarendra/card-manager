@@ -1,5 +1,12 @@
 class CardDatatable < AjaxDatatablesRails::ActiveRecord
-  extend Forwardable
+  
+
+  delegate :params, :link_to, :cards, to: :@view
+
+  def initialize(params, opts = {})
+    @view = opts[:view_context]
+    super
+  end
 
   def view_columns
     @view_columns ||= {
@@ -19,13 +26,14 @@ class CardDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         # id:           record.id,
-        name:         record.name,
+        name:         link_to(record.name, record),
         card_number:  record.card_number,
         cvc:          record.cvc,
         start_date:   record.start_date,
         end_date:     record.end_date,
         card_type:    record.card_type,
         bank_name:    record.bank_name,
+        
       }
     end
   end

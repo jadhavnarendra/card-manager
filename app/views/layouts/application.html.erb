@@ -7,16 +7,18 @@
      <!-- Bootstrap CSS -->
     
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   <script src = "js/jquery.dataTables.min.js" defer ></script>
-  
+   <script src = "http://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" defer ></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    
     <title>Card Manager App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-     
-    
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
+   
+  
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application'%> 
 
   </head>
 
