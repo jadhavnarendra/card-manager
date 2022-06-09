@@ -68,5 +68,7 @@ gem 'ajax-datatables-rails'
 gem 'jquery-rails'
 gem "chartkick"
 
+gem "letter_opener", group: :development
+
 
 

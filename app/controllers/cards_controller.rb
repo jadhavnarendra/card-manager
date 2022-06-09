@@ -6,15 +6,11 @@ class CardsController < ApplicationController
   def index
     @cards = Card.all
     @cards = Card.where(card_type: params[:card_type])
-    # @cards = Card.group(card_type: params[:card_type]).count
-   
     respond_to do |format|
       format.html
       format.csv { send_data @cards.to_csv, filename: "cards-#{Date.today}.csv" }
       format.json { render json: CardDatatable.new(params, view_context: view_context) }
     end
-    # render json: CardDatatable.new(params)
-      #format.xls # { send_data @cards.to_csv(col_sep: "/t") }
   end
 
   # def test
@@ -49,14 +45,14 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
 
-    respond_to do |format|
-      if @card.save
-        format.html { redirect_to card_url(@card), notice: "Card was successfully created." }
-        format.json { render :show, status: :created, location: @card }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
+    if @card.save
+      CardMailer.new_card_email(@card.user).deliver_now
+
+      flash[:success] = "Thank you for your card! We'll get contact you soon!"
+      redirect_to cards_path
+    else
+      flash.now[:error] = "Your card form had some errors. Please check the form and resubmit."
+      render :new
     end
   end
 
@@ -64,6 +60,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
+        CardMailer.update_card_email(@card.user).deliver_now
         format.html { redirect_to card_url(@card), notice: "Card was successfully updated." }
         format.json { render :show, status: :ok, location: @card }
       else
@@ -75,8 +72,8 @@ class CardsController < ApplicationController
 
   # DELETE /cards/1 or /cards/1.json
   def destroy
+    CardMailer.delete_card_email(@card.user).deliver_now
     @card.destroy
-
     respond_to do |format|
       format.html { redirect_to cards_url, notice: "Card was successfully destroyed." }
       format.json { head :no_content }

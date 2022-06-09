@@ -5,6 +5,6 @@ class User < ApplicationRecord
   has_many :cards
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable
+         :recoverable, :rememberable, :validatable, :trackable   
 
 end
