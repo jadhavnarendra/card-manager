@@ -120,17 +120,16 @@ Rails.application.configure do
 
 
   config.action_mailer.delivery_method = :smtp
-  host = 'example.com' #replace with your own url
-  config.action_mailer.default_url_options = { host: host }
-
-  # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    :address              => "narendrajadhav0707@gmail.com",
-    :port                 => 587,
-    :user_name            => narendra,
-    :password             => 123456,
-    :authentication       => "plain",
-    :enable_starttls_auto => true
-  }
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'example.com',
+    user_name:            '<username>',
+    password:             '<password>',
+    authentication:       'plain',
+    enable_starttls_auto: true,
+    open_timeout:         5,
+    read_timeout:         5 }
+  
 
 end

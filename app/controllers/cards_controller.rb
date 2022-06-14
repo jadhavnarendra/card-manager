@@ -46,8 +46,8 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
 
     if @card.save
-      CardMailer.new_card_email(@card.user).deliver_now
-
+      CardJob.perform_later(@card.user)
+      # CardMailer.new_card_email(@card.user).deliver_now
       flash[:success] = "Thank you for your card! We'll get contact you soon!"
       redirect_to cards_path
     else
@@ -72,9 +72,11 @@ class CardsController < ApplicationController
 
   # DELETE /cards/1 or /cards/1.json
   def destroy
-    CardMailer.delete_card_email(@card.user).deliver_now
+     CardMailer.delete_card_email(@card.user).deliver_now
+    
     @card.destroy
     respond_to do |format|
+      CardJob.perform_later(@card.user)
       format.html { redirect_to cards_url, notice: "Card was successfully destroyed." }
       format.json { head :no_content }
     end
