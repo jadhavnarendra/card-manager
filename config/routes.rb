@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   require "sidekiq/web"
-  
-  
+  require 'sidekiq/cron/web'
   
   devise_for :users
   get 'home/index'

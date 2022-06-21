@@ -1,0 +1,5 @@
+generate_random_user:
+  cron: "* * * * *"
+  class: "CardJob"
+  queue: default
+  argument: user
